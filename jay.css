@@ -81,3 +81,16 @@ font-weight: 500;
     font-weight: 400;
     color: rgb(101, 99, 99);
 }
+#parts_1{
+    color: white;
+}
+
+.new{
+    font-size: small;
+    color: white;
+}
+.content{
+    font-size: x-small;
+    color: white;
+    
+}
