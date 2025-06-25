@@ -17,11 +17,39 @@ body{
 .title{
     color: rgb(235, 133, 93);
 }
-.card{
-    height:350px;
-    width: auto;
-    margin-left: 12px;
-}
-.col{
+.img-fluid {
+    width: 100%; 
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 50vh;
+  }
+  .col{
     color: rgb(106, 105, 105);
+}
+  .text-1{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 100;
+    font-size: xx-small;
+}
+#images{
+    max-width: 300px;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+#layout{
+    background-color:rgb(8, 8, 42);
+    width: auto;
+    height: 150px;
+ }
+ #parts{
+    color: tomato;
+ }
+ .font{
+    font-family: "Allura", cursive;
+ }
+ .font2{
+    color: white;
+    font-size: x-small;
 }
