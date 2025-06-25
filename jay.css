@@ -23,7 +23,7 @@ body{
     display: block;
     object-fit: cover;
     max-height: 50vh;
-  }
+}
   .col{
     color: rgb(106, 105, 105);
 }
@@ -52,4 +52,32 @@ body{
  .font2{
     color: white;
     font-size: x-small;
+}
+.textimonials{
+    border-bottom: 3px solid #5a9bd5;
+    font-size: medium;
+    
+    font-weight: 500;
+    
+}
+.card-title-text{
+color: #5a9bd5;
+font-weight: 500;
+
+}
+.reviews{
+    font-family: "Ubuntu", sans-serif;
+}
+.location{
+    font-size: smaller;
+    font-weight: 400;
+    color: gray;
+}
+.end{
+    color: #5a9bd5;
+}
+.location-1{
+    font-size: smaller;
+    font-weight: 400;
+    color: rgb(101, 99, 99);
 }
