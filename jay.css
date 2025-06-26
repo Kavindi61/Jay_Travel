@@ -86,12 +86,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
 }
-.title {
-    color: #343a40;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+
 .form-control {
     border: 2px solid #ced4da;
     border-radius: 5px;
