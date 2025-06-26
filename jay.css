@@ -104,3 +104,33 @@ font-weight: 500;
     font-family: "Ubuntu", sans-serif;
     font-weight: 100;
 }
+.overlay {
+    background: rgba(255, 255, 255, 0.9);
+    min-height: 150vh;
+    padding: 50px 0;
+  }
+  .floating-card {
+    background: #f4f1f1;
+    border: 1px solid #dcaeae;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .floating-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(113, 70, 70, 0.1);
+  }
+  .floating-card h5 {
+    color: rgb(235, 133, 93);
+    font-family: "Roboto", sans-serif;
+  }
+
+  .floating-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .card-text-service{
+    font-family: "Ubuntu", sans-serif;
+
+  }
