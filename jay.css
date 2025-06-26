@@ -100,3 +100,7 @@ font-weight: 500;
 .fa-location-dot{
     color: tomato;
 }
+#about{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 100;
+}
