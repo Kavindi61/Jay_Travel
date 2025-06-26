@@ -323,96 +323,123 @@
 
 
 
-
-  <script>
-    // Wait for DOM to load
-  $(document).ready(function() {
-  // Form submission handler
-  $('#signupForm').on('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // Clear previous errors
-    $('.error').text('');
-    $('.form-control').removeClass('is-invalid');
-
-    // Get field values
-    const firstName = $('#firstName').val().trim();
-    const lastName = $('#lastName').val().trim();
-    const email = $('#email').val().trim();
-    const phone = $('#phone').val().trim();
-
-    let isValid = true;
-
-    // Validate First Name
-    if (!firstName) {
-      $('#firstNameError').text('First Name is required');
-      $('#firstName').addClass('is-invalid');
-      isValid = false;
-    }
-
-    // Validate Last Name
-    if (!lastName) {
-      $('#lastNameError').text('Last Name is required');
-      $('#lastName').addClass('is-invalid');
-      isValid = false;
-    }
-
-    // Validate Email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email) {
-      $('#emailError').text('Email is required');
-      $('#email').addClass('is-invalid');
-      isValid = false;
-    } else if (!emailRegex.test(email)) {
-      $('#emailError').text('Please enter a valid email address');
-      $('#email').addClass('is-invalid');
-      isValid = false;
-    }
-
-    // Validate Phone Number
-    const phoneRegex = /^\+?[\d\s-]{10,}$/;
-    if (!phone) {
-      $('#phoneError').text('Phone Number is required');
-      $('#phone').addClass('is-invalid');
-      isValid = false;
-    } else if (!phoneRegex.test(phone)) {
-      $('#phoneError').text('Please enter a valid phone number (min 10 digits)');
-      $('#phone').addClass('is-invalid');
-      isValid = false;
-    }
-
-    // If valid, log success (replace with actual submission logic)
-    if (isValid) {
-      console.log('Form is valid:', {
-        firstName,
-        lastName,
-        email,
-        phone,
-        newsletter: $('#checkDefault').is(':checked')
-      });
-      alert('Form submitted successfully!'); // Placeholder for user feedback
-      // Optionally reset form: $(this).trigger('reset');
-    }
-  });
-
-  // Real-time validation on input change
-  $('.form-control').on('input', function() {
-    const id = $(this).attr('id');
-    const value = $(this).val().trim();
-    const errorId = `#${id}Error`;
-
-    if (value) {
-      $(errorId).text('');
-      $(this).removeClass('is-invalid');
-    }
-  });
-});
-  </script>
-
-
-
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // Wait for DOM to load
+      $(document).ready(function() {
+              // Form submission handler
+              $('#signupForm').on('submit', function(event) {
+                  event.preventDefault(); // Prevent default form submission
+  
+                  // Clear previous validation states
+                  $('.error').text('');
+                  $('.form-control').removeClass('is-invalid is-valid');
+  
+                  // Get field values
+                  const firstName = $('#firstName').val().trim();
+                  const lastName = $('#lastName').val().trim();
+                  const email = $('#email').val().trim();
+                  const phone = $('#phone').val().trim();
+                  const newsletter = $('#checkDefault').is(':checked');
+  
+                  let isValid = true;
+  
+                  // Validate First Name
+                  if (!firstName) {
+                      $('#firstNameError').text('First Name is required');
+                      $('#firstName').addClass('is-invalid');
+                      isValid = false;
+                  } else {
+                      $('#firstName').addClass('is-valid');
+                  }
+  
+                  // Validate Last Name
+                  if (!lastName) {
+                      $('#lastNameError').text('Last Name is required');
+                      $('#lastName').addClass('is-invalid');
+                      isValid = false;
+                  } else {
+                      $('#lastName').addClass('is-valid');
+                  }
+  
+                  // Validate Email
+                  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                  if (!email) {
+                      $('#emailError').text('Email is required');
+                      $('#email').addClass('is-invalid');
+                      isValid = false;
+                  } else if (!emailRegex.test(email)) {
+                      $('#emailError').text('Please enter a valid email address');
+                      $('#email').addClass('is-invalid');
+                      isValid = false;
+                  } else {
+                      $('#email').addClass('is-valid');
+                  }
+  
+                  // Validate Phone Number
+                  const phoneRegex = /^\+?[\d\s-]{10,}$/;
+                  if (!phone) {
+                      $('#phoneError').text('Phone Number is required');
+                      $('#phone').addClass('is-invalid');
+                      isValid = false;
+                  } else if (!phoneRegex.test(phone)) {
+                      $('#phoneError').text('Please enter a valid phone number (min 10 digits)');
+                      $('#phone').addClass('is-invalid');
+                      isValid = false;
+                  } else {
+                      $('#phone').addClass('is-valid');
+                  }
+  
+                  // If valid, log data and show success message
+                  if (isValid) {
+                      console.log('Form submitted successfully:', {
+                          firstName,
+                          lastName,
+                          email,
+                          phone,
+                          newsletter
+                      });
+                      alert(`Form submitted successfully!\nNewsletter subscription: ${newsletter ? 'Yes' : 'No'}`);
+                      $(this).trigger('reset');
+                      $('.form-control').removeClass('is-valid'); // Clear valid styles after reset
+                  }
+              });
+  
+              // Real-time validation on input change
+              $('.form-control').on('input', function() {
+                  const id = $(this).attr('id');
+                  const value = $(this).val().trim();
+                  const errorId = `#${id}Error`;
+  
+                  // Reset validation state
+                  $(this).removeClass('is-invalid is-valid');
+                  $(errorId).text('');
+  
+                  // Validate in real-time
+                  if (id === 'firstName' || id === 'lastName') {
+                      if (value) {
+                          $(this).addClass('is-valid');
+                      }
+                  } else if (id === 'email') {
+                      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                      if (value && emailRegex.test(value)) {
+                          $(this).addClass('is-valid');
+                      } else if (value) {
+                          $(errorId).text('Please enter a valid email address');
+                          $(this).addClass('is-invalid');
+                      }
+                  } else if (id === 'phone') {
+                      const phoneRegex = /^\+?[\d\s-]{10,}$/;
+                      if (value && phoneRegex.test(value)) {
+                          $(this).addClass('is-valid');
+                      } else if (value) {
+                          $(errorId).text('Please enter a valid phone number (min 10 digits)');
+                          $(this).addClass('is-invalid');
+                      }
+                  }
+              });
+          });
+    </script>
   </body>
 </html>
